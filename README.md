@@ -26,23 +26,33 @@ Once deployed, your link will go here.
 
 ---
 
-## 🚀 Deploy Your Own Version (Fastest Way)
+## 🚀 Deploy to Vercel (Recommended)
 
-The quickest way to get a public link is with **Vercel** (free).
+This is a **heavy Three.js project**. Follow these steps carefully to avoid build errors on Vercel.
 
-### One-Click Deploy
+### 1. Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world&project-name=dreamscape-journey&repository-name=dreamscape-journey)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-**Recommended steps:**
+### 2. Important Vercel Settings (Required)
 
-1. Click the button above (or go to [vercel.com/new](https://vercel.com/new))
-2. Import your GitHub repo (or connect this folder)
-3. Vercel will detect it's a Next.js project automatically
-4. Click **Deploy**
-5. In ~1 minute you'll get a public link like `https://dreamscape-journey-xxx.vercel.app`
+After importing the project, **before clicking Deploy**, go to:
 
-That's it. Share that link with your friend.
+**Settings → General → Build & Development Settings**
+
+- **Build Command**: `npm run build`
+
+Then go to **Environment Variables** and add this:
+
+| Name            | Value                        |
+|-----------------|------------------------------|
+| `NODE_OPTIONS`  | `--max-old-space-size=4096`  |
+
+This increases memory during build (prevents "Call retries were exceeded" errors).
+
+### 3. Deploy
+
+Click **Deploy**. The first build may take 2-3 minutes.
 
 ---
 
