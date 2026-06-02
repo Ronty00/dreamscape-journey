@@ -158,27 +158,6 @@ const MIRROR_ECHOES = [
   "You have always been both the question and the answer. The lake is only reminding you.",
 ];
 
-export function getWorldEcho(phase: string, name: string, profile: NameProfile): string {
-  const hash = simpleHash(name + phase);
-  let pool: string[] = [];
-
-  switch (phase) {
-    case 'sky': pool = SKY_ECHOES; break;
-    case 'crystal': pool = CRYSTAL_ECHOES; break;
-    case 'ocean': pool = OCEAN_ECHOES; break;
-    case 'mirror': pool = MIRROR_ECHOES; break;
-    case 'forest': pool = FOREST_ECHOES; break;
-    default: return "";
-  }
-
-  // Bias toward certain echoes based on name profile for deeper personalization
-  let index = getSeededIndex(hash, pool.length);
-  if (profile.vowelWeight > 0.65 && phase === 'ocean') index = Math.min(pool.length - 1, index + 1);
-  if (profile.consonantWeight > 0.7 && phase === 'crystal') index = Math.min(pool.length - 1, index + 1);
-
-  return pool[index % pool.length];
-}
-
 // ============================================
 // THE GUARDIANS — Now proper archetypal beings with depth
 // ============================================
