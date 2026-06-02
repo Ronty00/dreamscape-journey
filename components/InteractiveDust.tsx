@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import type { MousePos } from '@/app/page'; // We'll adjust this later if needed
+import type { MousePos } from '@/lib/types';
 
 interface InteractiveDustProps {
   mouse: MousePos;
